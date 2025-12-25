@@ -303,6 +303,10 @@ main .social-links li a:hover {
     width: 100%;
 }
 
+#freelance .mobile-style-freelance {
+    display: none;
+}
+
 .fade-out {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
@@ -530,7 +534,7 @@ footer ul li a {
         width: 100%;
         margin-bottom: 20px;
     }
-    
+
     #freelance .mobile-style-freelance p {
         margin-bottom: 15px;
         background-color: #2ebf91;
