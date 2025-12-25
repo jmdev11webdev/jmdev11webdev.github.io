@@ -1,35 +1,35 @@
-const sections = Array.from(document.querySelectorAll('section'));
-const scrollTopBtn = document.querySelector('.scroll-top-btn');
-const homeSection = document.querySelector('#home');
-
-/* show / hide button when leaving home */
-const observer = new IntersectionObserver(
-    ([entry]) => {
-        scrollTopBtn.classList.toggle('show', !entry.isIntersecting);
-    },
-    { threshold: 0.6 }
-);
-
-observer.observe(homeSection);
-
-/* scroll up ONE section at a time */
-scrollTopBtn.addEventListener('click', () => {
-    const scrollPosition = window.scrollY;
-
-    for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionTop = sections[i].offsetTop;
-
-        if (sectionTop < scrollPosition - 10) {
-            sections[i].scrollIntoView({ behavior: 'smooth' });
-            break;
-        }
-    }
+document.getElementById('home').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });
 
-function opensidebar() {
-  document.getElementById("mySidebar").style.display = "block";
+function open_nav() {
+    document.getElementById("MySidebar").style.display = "block"; 
+    document.getElementById("MySidebar").style.width = "250px"; 
 }
 
-function closesidebar() {
-  document.getElementById("mySidebar").style.display = "none";
+function close_nav() {
+    document.getElementById("MySidebar").style.width = "0"; 
+    document.getElementById("MySidebar").style.display = "none";
 }
+
+const navbar = document.getElementById("navbar");
+  const main = document.getElementById("main-content");
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry.isIntersecting) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    },
+    {
+      threshold: 0,
+    }
+  );
+
+  observer.observe(main);
